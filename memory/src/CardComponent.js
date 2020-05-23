@@ -6,7 +6,7 @@ function CardComponent(props){
             
             <div className="shadow-box">
                 <div className="d-flex col-sm-3">
-                    <img className="flip" onClick={() => props.handleClick(props.item.key)}  value={props.value} src={props.imgLink} animal={props.animal} alt="dog" border="0" />
+                    <img className="flip" onClick={() => props.handleClick(props.item)}  key={props.item.key} value={props.animal} src={props.imgLink} alt="dog" border="0" />
                 </div>
             </div>
         )

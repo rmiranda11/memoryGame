@@ -1,77 +1,127 @@
+
+
 const cardData = [
 
+
+    {
+        key:0,
+        animal:"dog",
+        isFlipped:false,
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/NxTr5Hx/dog.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+    },
     {
         key:1,
         animal:"dog",
         isFlipped:false,
-        pic:"https://i.ibb.co/NxTr5Hx/dog.jpg"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/NxTr5Hx/dog.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:2,
-        animal:"dog",
+        animal:"cat",
         isFlipped:false,
-        pic:"https://i.ibb.co/NxTr5Hx/dog.jpg"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/xDZ5mNt/cat.png",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:3,
         animal:"cat",
         isFlipped:false,
-        pic:"https://i.ibb.co/xDZ5mNt/cat.png"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/xDZ5mNt/cat.png",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:4,
-        animal:"cat",
+        animal:"bird",
         isFlipped:false,
-        pic:"https://i.ibb.co/xDZ5mNt/cat.png"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/Yt6ZbbF/bird.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:5,
         animal:"bird",
         isFlipped:false,
-        pic:"https://i.ibb.co/Yt6ZbbF/bird.jpg"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/Yt6ZbbF/bird.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:6,
-        animal:"bird",
+        animal:"fish",
         isFlipped:false,
-        pic:"https://i.ibb.co/Yt6ZbbF/bird.jpg"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/rFwn5z2/fish.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:7,
         animal:"fish",
         isFlipped:false,
-        pic:"https://i.ibb.co/rFwn5z2/fish.jpg"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/rFwn5z2/fish.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
+
     },
     {
         key:8,
-        animal:"fish",
+        animal:"elephant",
         isFlipped:false,
-        pic:"https://i.ibb.co/rFwn5z2/fish.jpg"
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/LPZPyDK/elephant.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
 
     },
     {
         key:9,
         animal:"elephant",
         isFlipped:false,
-        pic:"https://i.ibb.co/LPZPyDK/elephant.jpg" 
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/LPZPyDK/elephant.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:10,
-        animal:"elephant",
+        animal:"kangaroo",
         isFlipped:false,
-        pic:"https://i.ibb.co/LPZPyDK/elephant.jpg"  
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/j8tyyqx/kangaroo.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
     },
     {
         key:11,
         animal:"kangaroo",
         isFlipped:false,
-        pic:"https://i.ibb.co/j8tyyqx/kangaroo.jpg" 
-    },
-    {
-        key:12,
-        animal:"kangaroo",
-        isFlipped:false,
-        pic:"https://i.ibb.co/j8tyyqx/kangaroo.jpg" 
+        isMatched:false,
+        picHere: "",
+        pic:"https://i.ibb.co/j8tyyqx/kangaroo.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+
  
     }
 
