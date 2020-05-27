@@ -9,7 +9,7 @@ function App() {
   const[cards,setCardData] = useState(cardData)
   const[flipCount,setFlipCount] = useState(1)
   const[start, initGame] = useState(false)
-  const[maxFlips, setMaxFlip] = useState(false)
+  const[maxFlip, setMaxFlip] = useState(false)
   const[firstCard, setFirstCard] = useState([])
   const[secondCard, setSecondCard] = useState([])
   const[score,setScore] = useState(0)
@@ -50,63 +50,94 @@ function App() {
   function handleClick (event) {
 
     let currentCard = event
-    // console.log(currentCard)
+    setFlipCount(flipCount + 1)
+    console.log("FlipCount: " + flipCount)
+    
 
     //changes isFlipped to true or false when clicked
     if(currentCard.isFlipped || !currentCard.isFlipped){
       (event.isFlipped = !event.isFlipped)
     }
+/////////////////////////////////////////////////////////
+
+var first  
+var second 
+
+if(flipCount === 1){
+   first = event
+   setFirstCard(first)
+
+}
+if(flipCount === 2){
+  second = event
+  setSecondCard(second)
+}
+
+console.log(firstCard)
+console.log(secondCard)
 
 
-    // Counts Flips and resets if greater than 2
-    setFlipCount(flipCount + 1)
-    console.log(flipCount)
+  
 
-    if(flipCount > 2)
-    {
-      setFlipCount(1) 
+   if(flipCount > 2){
       setMaxFlip(true)
+      setFlipCount(1)
+      setFirstCard([])
+      setSecondCard([])
+
+        
       
 
-      if(firstCard.isMatched){
-        firstCard.picHere = event.pic
+      if(flipCount === 3){
+        
+      if(firstCard.animal === secondCard.animal && firstCard.key != secondCard.key){
+        setFlipCount(2)
+        firstCard.isMatched = true
+        secondCard.isMatched = true
+        console.log("Match")
+        setMaxFlip(false)
       }else{
-        cards.forEach(element => element.isFlipped = false)
+        cards.forEach(element => !element.isMatched ? element.isFlipped = false : element.isFlipped = true)
       }
-    }else {
-      setMaxFlip(false)
     }
+    }else{setMaxFlip(false)}
 
+  
 
-    var first  
-    var second 
+// if(flipCount > 2){    
 
-    if(flipCount === 1){
-       first = event
-       setFirstCard(first)
+//   if(firstCard.animal === secondCard.animal){
+//     setFlipCount(1)
+//     setScore(+1)
+//     setFirstCard([])
+//     setSecondCard([])
+//     setMaxFlip(false)
+//     firstCard.isMatched = true
+//     secondCard.isMatched = true
+//     firstCard.picHere && secondCard.picHere != "https://i.ibb.co/3R5Cs3B/X.jpg"
+//   }
 
-    }
-    if(flipCount === 2){
-      second = event
-      setSecondCard(second)
-   
+// }
+///////////////////////////////////////////////////////////////////
 
-    }
+    // if(maxFlip){
+    //   if(currentCard.animal === firstCard.animal){
+    //     setFlipCount(1)
+    //     setMaxFlip(false)
+    //     currentCard.isMatched = true
+    //     firstCard.isMatched = true
+    //     console.log("Match")
+    //   }else{
+    //     cards.forEach(element => element.isFlipped = false)
+    //   }
+    //   setFlipCount(1)
+    // }
 
-    console.log(firstCard)
-    console.log(second)
-
-
-    if(firstCard.animal === secondCard.animal){
-      firstCard.isMatched = true
-      secondCard.isMatched = true
-      console.log("match")
-      }
-
+    // setFirstCard(event)
+    // console.log(firstCard)
 
  
   } //end handleClick
-
 
 
 
@@ -118,11 +149,14 @@ function App() {
         imgLink={
 
           // if its flipped and start button pressed and max flips havent maxed yet
-          item.isFlipped && start 
+          item.isFlipped && start
           ?
-           item.isMatched && maxFlips === 2 ? item.picHere = item.pic : item.pic
+          item.picHere = item.pic
+          //  item.isMatched ? item.picHere = item.pic : item.picHere = item.pic
            :
-            item.picHere = "https://i.ibb.co/3R5Cs3B/X.jpg"
+            item.isMatched ? item.picHere = item.pic :
+
+           item.picHere = "https://i.ibb.co/3R5Cs3B/X.jpg"
           }
 
         animal={item.animal}
@@ -150,3 +184,57 @@ function App() {
 export default App;
 
 // "https://i.ibb.co/3R5Cs3B/X.jpg"
+
+
+
+
+// if(flipCount > 2)
+// {
+//   setFlipCount(1) 
+//   setMaxFlip(true)
+  
+//   if(maxFlips){
+//     setFlipCount(1)
+//   }else if(!firstCard.isMatched && !secondCard.isMatched && flipCount > 2){
+//     cards.forEach(element => element.isFlipped = false)
+//   }
+
+// }else {
+//   setMaxFlip(false)
+// }
+
+
+// var first  
+// var second 
+
+// if(flipCount === 1){
+//    first = event
+//    setFirstCard(first)
+
+// }
+// if(flipCount === 2){
+//   second = event
+//   setSecondCard(second)
+// }
+
+// console.log(firstCard)
+// console.log(secondCard)
+
+
+// // if(firstCard.animal === secondCard.animal){
+// //   setFlipCount(1)
+
+// //   console.log("match")
+// //   }
+
+// if(flipCount === 3){    
+
+//   if(firstCard.animal === secondCard.animal){
+//     setFlipCount(1)
+//     setScore(+1)
+//     firstCard.isMatched = true
+//     secondCard.isMatched = true
+//     firstCard.picHere && secondCard.picHere != "https://i.ibb.co/3R5Cs3B/X.jpg"
+//   }
+
+// }
