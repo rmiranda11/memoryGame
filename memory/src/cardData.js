@@ -81,27 +81,27 @@ const cardData = [
         pic:"https://sep.yimg.com/ay/skyimage/backwards-spiral-galaxy-8.jpg",
         pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
 
-
+    },
     
-    // {
-    //     key:8,
-    //     animal:"sombrero",
-    //     isFlipped:false,
-    //     isMatched:false,
-    //     picHere: "",
-    //     pic:"https://sep.yimg.com/ay/skyimage/m104-sombrero-galaxy-in-infrared-9.jpg",
-    //     pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+    {
+        key:8,
+        animal:"sombrero",
+        isFlipped:false,
+        isMatched:false,
+        picHere: "",
+        pic:"https://sep.yimg.com/ay/skyimage/m104-sombrero-galaxy-in-infrared-9.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
 
-    // },
-    // {
-    //     key:9,
-    //     animal:"sombrero",
-    //     isFlipped:false,
-    //     isMatched:false,
-    //     picHere: "",
-    //     pic:"https://sep.yimg.com/ay/skyimage/m104-sombrero-galaxy-in-infrared-9.jpg",
-    //     pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
-
+    },
+    {
+        key:9,
+        animal:"sombrero",
+        isFlipped:false,
+        isMatched:false,
+        picHere: "",
+        pic:"https://sep.yimg.com/ay/skyimage/m104-sombrero-galaxy-in-infrared-9.jpg",
+        pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
+    }
     // },
     // {
     //     key:10,
@@ -211,7 +211,7 @@ const cardData = [
     //     pic2: "https://i.ibb.co/3R5Cs3B/X.jpg"
 
  
-    }
+    // }
 
 
 ]

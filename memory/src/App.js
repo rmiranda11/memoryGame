@@ -4,10 +4,13 @@ import './App.css';
 import CardComponent from "./CardComponent";
 import cardData from "./cardData"
 
+
+
 function App() {
 
   const [cards, setCardData] = useState(cardData)
   const [flipCount, setFlipCount] = useState(0)
+  const [flipCount2, setFlipCount2] = useState(0)
   const [start, initGame] = useState(false)
   const [maxFlip, setMaxFlip] = useState(false)
   const [firstCard, setFirstCard] = useState([])
@@ -34,6 +37,7 @@ function App() {
   }
 
 
+
   const startGame = () => {
 
     // when startGame is pressed you shuffle cards
@@ -44,81 +48,105 @@ function App() {
     initGame(true)
 
 
+
   }
 
 
   useEffect(() => {
 
+    // if(flipCount > 2){
+    //   setFlipCount(0)
+    // }
+    // if(firstCard.isMatched && secondCard.isMatched){
+    //   setFlipCount(0)
+    // }
 
   })
 
+  // toggle = () => {
 
-  function handleClick(event) {
+  // }
+
+  // const but = () => {
+  //   setFlipCount(flipCount+1)
+  //   console.log(flipCount)
+  // }
+
+  function handleClick (event){
+
+    
+  function GameScore() {
+
+    if(firstCard.isMatched && secondCard.isMatched){
+      let scoreCount = Math.round(10000 / flipCount2)
+      setScore(score => score + scoreCount)
+    }
+  }
+
+    setFlipCount2(flipCount2 => flipCount2 + 1)
+    GameScore()
 
     let currentCard = event
-    setFlipCount(flipCount + 1)
-    console.log("FlipCount: " + flipCount)
+    setFlipCount(flipCount => flipCount + 1)
+    // console.log("FlipCount: " + flipCount)
 
     setTotal(totalFlips + 1)
     // console.log(totalFlips)
 
 
     //changes isFlipped to true or false when clicked
+    
     if (currentCard.isFlipped || !currentCard.isFlipped) {
       (event.isFlipped = !event.isFlipped)
     }
     /////////////////////////////////////////////////////////
 
-    var first
-    var second
 
-    if (flipCount === 0) {
-      first = event
-      setFirstCard(first)
+      if (flipCount === 0) {
+        setFirstCard(event)
+      }
+      // setFirstCard(event)
 
-    }
-    if (flipCount === 1) {
-      second = event
-      setSecondCard(second)
-    }
+      if (flipCount === 1) {
+        setSecondCard(event)
+      }
+    
 
-    console.log(firstCard)
-    console.log(secondCard)
+    ///////////////////////////////////////////////////////////////////
+    Matcher()
 
+  } //end handleClick
 
+  function Matcher(){
 
 
     if (flipCount > 1 ) {
-      flipCount !== 2
       setMaxFlip(true)
-      setFlipCount(flipCount-1)
-      // setFirstCard([])
-      // setSecondCard([])
+      setFlipCount(1)
+      
+
+    if(firstCard.animal !== secondCard.animal){
+      setFirstCard([])
+      setSecondCard([])
+    }
 
       // if first animal is equal to second animal and keys are not the same then change 
       // isMatched value to true
       if (firstCard.animal === secondCard.animal && firstCard.key !== secondCard.key) {
         
-        setFlipCount(flipCount - 1)
+        // setFirstCard([])
+        // setSecondCard([])
+        
+        setFlipCount(0)
         setMaxFlip(false)
+
 
         firstCard.isMatched = true
         secondCard.isMatched = true
 
+        firstCard.isMatched && secondCard.isMatched ? setFlipCount(0) : setFlipCount(1)
 
-      
-
-        if (firstCard.isMatched && secondCard.isMatched) {
-          setFlipCount(flipCount-1)
-          // setMaxFlip(false)
-          // console.log("Matched")s
-
-        }
-
-        
-        // if(currentCard.isMatched === secondCard.isMatched && flipCount === 1){
-        //   setFlipCount(flipCount -1)
-        // }
+        cards.forEach(element => !element.isMatched ? element.isFlipped = false : element.isFlipped = true)
 
       } else {
         setFlipCount(0)
@@ -130,39 +158,32 @@ function App() {
       ///////////////////////////////////////////////////////////////////////////
 
 
-      //controls score
-      const rndNum = Math.round(+1000 / totalFlips)
-      setScore(rndNum + score)
-
 
     } else {
       setMaxFlip(false)
     }
 
-
-    ///////////////////////////////////////////////////////////////////
-
-
-  } //end handleClick
+  }
 
 
 
   const cardList = cardData.map(item =>
     <CardComponent
+      style={item.isMatched ?{boxShadow: ".3rem .3rem 25px blue",  border: ".1rem solid transparent", borderImage:"linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)" , borderImageSlice: "1"}: {boxShadow:".4rem .4rem 30px red"}}
       key={item.key}
       handleClick={start ? handleClick : null}
       item={item}
+      disabled={item.isMatched ? true : false}
       imgLink={
 
         // if its flipped and start button pressed and max flips havent maxed yet
         item.isFlipped && start && !maxFlip
           ?
           item.picHere = item.pic
-          //  item.isMatched ? item.picHere = item.pic : item.picHere = item.pic
           :
-          item.isMatched ? item.picHere = item.pic :
+          item.isMatched ? item.picHere = item.pic : 
 
-            item.picHere = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e4175c3f-297e-48be-8d30-8480016829c7/d6dlsyg-52f89407-773a-464f-93d3-4648cc91f3fb.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZTQxNzVjM2YtMjk3ZS00OGJlLThkMzAtODQ4MDAxNjgyOWM3XC9kNmRsc3lnLTUyZjg5NDA3LTc3M2EtNDY0Zi05M2QzLTQ2NDhjYzkxZjNmYi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DbrXxjuDy1GCL4bWW-REB40nCLH2ZBz39FsChuxb_nE"
+            item.picHere = "https://cdn.shopify.com/s/files/1/1793/9427/products/PLAYDEAD_cardback.png?v=1559353487"
       }
 
       animal={item.animal}
@@ -170,7 +191,14 @@ function App() {
       flipped={item.isFlipped}
     />)
 
-
+    console.log("FirstCard: ")
+    console.log(firstCard)
+    console.log("--------------------")
+    console.log("SecondCard")
+    console.log(secondCard)
+    console.log("FlipCount: " + flipCount)
+    
+    
   return (
     <div className="App"> <h1 className="title">Galaxy Memory</h1>
 

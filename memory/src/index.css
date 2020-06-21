@@ -1,5 +1,6 @@
 body {
-  background-image: url("https://s3.amazonaws.com/discoverhealling-wp/wp-content/uploads/2018/12/home-starry-background.jpg");
+  background-image: url("https://wallpapertag.com/wallpaper/full/b/2/6/114219-new-galaxy-background-tumblr-1920x1200-for-ipad.jpg");
+  /* https://s3.amazonaws.com/discoverhealling-wp/wp-content/uploads/2018/12/home-starry-background.jpg */
   /* padding: 3rem; */
   background-repeat: repeat-y;
   background-size:100%;
@@ -23,14 +24,14 @@ body {
 
 .flip{
   width:13rem;
-  height:18rem;
+  height:19rem;
   /* border-radius:50%; */
   opacity:100%;
 
 }
 
 .shadow-box{
-  border: .1rem solid white;
+  border: .2rem solid white;
   /* padding:5px; */
   /* background-color:white; */
   margin:2rem;
@@ -39,4 +40,5 @@ body {
 
 .title{
   font-size: 10rem;
+  color:rgba(119, 174, 230, 0.76);
 }
