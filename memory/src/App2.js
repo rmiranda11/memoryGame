@@ -1,3 +1,13 @@
+
+
+///////////////////////////////////////////////////////////////////////
+// this is the regular working version. Saved in App2 for safekeeping. 
+///////////////////////////////////////////////////////////////////////
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import './App.css';
@@ -17,8 +27,6 @@ function App() {
   const [secondCard, setSecondCard] = useState([])
   const [score, setScore] = useState(0)
   const [totalFlips, setTotal] = useState(0)
-  const [timer, setTimer] = useState(2)
-  const [startClock, setClockStart] = useState(false)
 
 
 
@@ -52,101 +60,18 @@ function App() {
 
 
   }
-  
-  useEffect(() =>{
-    if(startClock && timer > 0){
-    setTimeout(() => {
-      setTimer(time => time -1)
-    }, 1000)
-  }
-  if(timer === 0){
-    setTimer(2)
-    setClockStart(false)
-  }
-  },[timer, startClock])
-
-
-  // useEffect(() => {
-  //   if(firstCard.animal !== secondCard.animal){
-  //     setFlipCount(0)
-  //     cards.forEach(element => element.isFlipped = false)
-  //       // setTimeout(() => {
-  //       //   setTimer(time => time -1)
-  //       // }, 1000)
-  //   }
-  // },[firstCard, secondCard])
-
-
 
 
   useEffect(() => {
 
-    
-
-    // if (flipCount > 1 ) {
-    //   setMaxFlip(true)
-    // }
-
-    // if(maxFlip){
+    // if(flipCount > 2){
     //   setFlipCount(0)
-
-      if(flipCount > 1){
-      setMaxFlip(true)
-          
-
-      // if first animal is equal to second animal and keys are not the same then change 
-      // isMatched value to true
-      if (firstCard.animal === secondCard.animal && firstCard.key !== secondCard.key) {
-
-        
-        setFlipCount(0)
-        setMaxFlip(false)
-        setClockStart(false)
-
-
-        firstCard.isMatched = true
-        secondCard.isMatched = true
-
-        firstCard.isMatched && secondCard.isMatched ? setFlipCount(0) : setFlipCount(1)
-
-        // cards.forEach(element => !element.isMatched ? element.isFlipped = false : element.isFlipped = true)
-        cards.forEach(element => !element.isMatched ? element.isFlipped = false : element.isFlipped = true)
-
-      
-      } 
-       if(firstCard.animal !== secondCard.animal) {
-        setClockStart(true)
-        setFlipCount(0)
-        setMaxFlip(false)
-
-        firstCard.isMatched = false
-        secondCard.isMatched = false
-        
-        
-        cards.forEach(element => element.isMatched ? element.isFlipped = true : element.isFlipped = false)
-        // setFlipCount(0)
-        // cards.forEach(element => 
-        //   {if(!element.isMatched && startClock){
-        //     element.isFlipped = false
-
-        //     }
-        //   }
-          // )  
-      }
-    
-
- 
-      ///////////////////////////////////////////////////////////////////////////
-
-
     // }
-    } else {
-      setMaxFlip(false)
-      console.log("what")
-    }
+    // if(firstCard.isMatched && secondCard.isMatched){
+    //   setFlipCount(0)
+    // }
 
-
-  },[timer,flipCount2])
+  })
 
   // toggle = () => {
 
@@ -198,8 +123,58 @@ function App() {
     
 
     ///////////////////////////////////////////////////////////////////
+    Matcher()
 
   } //end handleClick
+
+  function Matcher(){
+
+
+    if (flipCount > 1 ) {
+      setMaxFlip(true)
+      setFlipCount(1)
+      
+
+    if(firstCard.animal !== secondCard.animal){
+      setFirstCard([])
+      setSecondCard([])
+    }
+
+      // if first animal is equal to second animal and keys are not the same then change 
+      // isMatched value to true
+      if (firstCard.animal === secondCard.animal && firstCard.key !== secondCard.key) {
+        
+        // setFirstCard([])
+        // setSecondCard([])
+        
+        setFlipCount(0)
+        setMaxFlip(false)
+
+
+        firstCard.isMatched = true
+        secondCard.isMatched = true
+
+        firstCard.isMatched && secondCard.isMatched ? setFlipCount(0) : setFlipCount(1)
+
+        cards.forEach(element => !element.isMatched ? element.isFlipped = false : element.isFlipped = true)
+
+      } else {
+        setFlipCount(0)
+
+        cards.forEach(element => !element.isMatched ? element.isFlipped = false : element.isFlipped = true)
+      }
+
+ 
+      ///////////////////////////////////////////////////////////////////////////
+
+
+
+    } else {
+      setMaxFlip(false)
+    }
+
+  }
+
 
 
   const cardList = cardData.map(item =>
@@ -226,17 +201,16 @@ function App() {
       flipped={item.isFlipped}
     />)
 
-    // console.log("FirstCard: ")
-    // console.log(firstCard)
-    // console.log("--------------------")
-    // console.log("SecondCard")
-    // console.log(secondCard)
-    // console.log("FlipCount: " + flipCount)
+    console.log("FirstCard: ")
+    console.log(firstCard)
+    console.log("--------------------")
+    console.log("SecondCard")
+    console.log(secondCard)
+    console.log("FlipCount: " + flipCount)
     
     
   return (
     <div className="App"> <h1 className="title">Galaxy Memory</h1>
-    <h1>Time: {timer}</h1>
 
       <div className="row d-flex justify-content-center">
         <button className="col-sm-3 btn btn-info " type="button" disabled={start} onClick={startGame}>Start Game</button>
